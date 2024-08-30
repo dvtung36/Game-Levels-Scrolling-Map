@@ -13,9 +13,22 @@ class PointModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['Width'] = this.width;
-    data['Child'] = this.child;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['Width'] = width;
+    data['Child'] = child;
     return data;
   }
+
+  @override
+  bool operator ==(covariant PointModel other) {
+    return width == other.width && isCurrent == other.isCurrent;
+  }
+
+  @override
+  int get hashCode => Object.hashAll(
+        [
+          width,
+          isCurrent,
+        ],
+      );
 }
